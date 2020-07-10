@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="UI.FilesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UI.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding Source={StaticResource Locator}, Path=FilesVM}">
+    <Page.Resources>
+        <Style x:Key="style" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="FontSize" Value="36"/>
+        </Style>
+        <Style x:Key="style1" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Blue"/>
+            <Setter Property="FontSize" Value="28"/>
+        </Style>
+        <Style x:Key="style2" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Silver"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="1" Grid.RowSpan="2">
+            <Button Command="{Binding UploadFileCommand}" Content="Upload"/>
+            <Button Command="{Binding DownloadPageCommand}" Content="Go to Download"/>
+            <Button Command="{Binding DisconnectedCommand}" Content="Disconnect"/>
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="0,40,0,0"/>
+
+                </Style>
+            </StackPanel.Resources>
+        </StackPanel>
+        
+            <TextBlock Text="Upload File:" Style="{StaticResource style}"/>
+            <ListBox ItemsSource="{Binding FilesList}" Grid.Row="1">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                        <TextBlock Text="{Binding Id}" Style="{StaticResource style2}"/>
+                        <TextBlock Text="{Binding Name}" Style="{StaticResource style1}"/>
+                        
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        
+
+    </Grid>
+</Page>

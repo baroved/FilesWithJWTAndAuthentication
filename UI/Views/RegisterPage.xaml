@@ -1,0 +1,65 @@
+﻿<Page
+    x:Class="UI.RegisterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UI.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding Source={StaticResource Locator}, Path=RegisterVM}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="1">
+            <StackPanel.Resources>
+                <Style x:Key="title" TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="50"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Bottom"/>
+                    <Setter Property="Foreground" Value="Blue"/>
+                </Style>
+            </StackPanel.Resources>
+            <TextBlock Style="{StaticResource title}" Text="Register"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" >
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Margin" Value="0,40,0,0"/>
+
+                </Style>
+
+                <Style TargetType="Button">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Content" Value="Register"/>
+                    <Setter Property="Margin" Value="0,40,0,0"/>
+                </Style>
+                <Style TargetType="HyperlinkButton">
+                    <Setter Property="Content" Value="Go back to login"/>
+                    <Setter Property="Margin" Value="0,40,0,0"/>
+                </Style>
+
+            </StackPanel.Resources>
+            <TextBlock Text="Username:"/>
+            <TextBox Text="{Binding UserName,Mode=TwoWay}" PlaceholderText="Username"/>
+
+            <TextBlock Text="Password:"/>
+            <TextBox Text="{Binding Password,Mode=TwoWay}" PlaceholderText="Password"/>
+            <TextBlock Text="Email:"/>
+            <TextBox Text="{Binding Email,Mode=TwoWay}" PlaceholderText="Email" ToolTipService.ToolTip="For example:abc@gmail.com"/>
+            <Button Command="{Binding ShowFilesPage}"/>
+            <HyperlinkButton Command="{Binding GoBackCommand}"/>
+        </StackPanel>
+    </Grid>
+</Page>
